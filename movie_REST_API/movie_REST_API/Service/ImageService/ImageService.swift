@@ -8,12 +8,12 @@ final class ImageService: ImageServiceProtocol {
     // MARK: - Public properties
 
     let imageNetworkService = ImageNetworkService()
-    let fileManagerService = FileManagerService()
+    let fileService = FileService()
 
     // MARK: - Public methods
 
     func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let proxy = ProxyService(imageNetworkService: imageNetworkService, fileManagerService: fileManagerService)
+        let proxy = ProxyService(imageNetworkService: imageNetworkService, fileService: fileService)
         proxy.loadImage(by: imageURLPath) { result in
             switch result {
             case let .success(image):

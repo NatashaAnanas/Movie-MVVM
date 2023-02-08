@@ -1,9 +1,5 @@
-//
-//  ActorViewModelProtocol.swift
-//  movie_REST_API
-//
-//  Created by Анастасия Козлова on 08.02.2023.
-//
+// ActorViewModelProtocol.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 

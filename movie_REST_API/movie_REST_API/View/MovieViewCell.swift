@@ -183,7 +183,7 @@ final class MovieViewCell: UITableViewCell {
                 }
             case .failure:
                 DispatchQueue.main.async {
-                    self.movieImageView.image = UIImage(systemName: Constant.filmImageName)
+                    self?.movieImageView.image = UIImage(systemName: Constant.filmImageName)
                 }
             }
         }

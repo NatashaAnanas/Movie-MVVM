@@ -1,4 +1,4 @@
-// InfoMovieViewController.swift
+// ActorMovieViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit

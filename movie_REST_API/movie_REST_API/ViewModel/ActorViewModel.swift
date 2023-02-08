@@ -12,9 +12,9 @@ final class ActorViewModel: ActorViewModelProtocol {
         static let secondPartURLString = "/credits?api_key=74b256bd9644791fa138aeb51482b3b8&language=en-US"
         static let errorString = "Error processing json data: "
     }
-    
+
     // MARK: - Public Properties
-    
+
     var isPressed = false
 
     // MARK: - Private Properties
@@ -22,7 +22,6 @@ final class ActorViewModel: ActorViewModelProtocol {
     private let imageService: ImageServiceProtocol?
     private var networkService: NetworkServiceProtocol?
     private var actors: [Actor] = []
-
 
     // MARK: - Initializers
 

@@ -26,11 +26,11 @@
 		41BBA1DB29914BF90019B46E /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BBA1DA29914BF90019B46E /* BaseCoordinator.swift */; };
 		41BBA1DF29914CCB0019B46E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BBA1DE29914CCB0019B46E /* MainCoordinator.swift */; };
 		41BBA1E1299182160019B46E /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BBA1E0299182160019B46E /* AssemblyBuilder.swift */; };
-		41ED57522991A2F5006B6BCD /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED57512991A2F5006B6BCD /* FileManagerService.swift */; };
+		41ED57522991A2F5006B6BCD /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED57512991A2F5006B6BCD /* FileService.swift */; };
 		41ED57542991A369006B6BCD /* ImageNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED57532991A369006B6BCD /* ImageNetworkService.swift */; };
 		41ED57562991A46A006B6BCD /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED57552991A46A006B6BCD /* ImageService.swift */; };
 		41ED57582991A4A6006B6BCD /* ProxyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED57572991A4A6006B6BCD /* ProxyService.swift */; };
-		41ED575B2991A4DB006B6BCD /* FileManagerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED575A2991A4DB006B6BCD /* FileManagerServiceProtocol.swift */; };
+		41ED575B2991A4DB006B6BCD /* FileServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED575A2991A4DB006B6BCD /* FileServiceProtocol.swift */; };
 		41ED575D2991A507006B6BCD /* ImageNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED575C2991A507006B6BCD /* ImageNetworkServiceProtocol.swift */; };
 		41ED575F2991A52A006B6BCD /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED575E2991A52A006B6BCD /* ImageServiceProtocol.swift */; };
 		41ED57612991A54D006B6BCD /* ProxyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED57602991A54D006B6BCD /* ProxyProtocol.swift */; };
@@ -67,11 +67,11 @@
 		41BBA1DA29914BF90019B46E /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		41BBA1DE29914CCB0019B46E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		41BBA1E0299182160019B46E /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
-		41ED57512991A2F5006B6BCD /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
+		41ED57512991A2F5006B6BCD /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		41ED57532991A369006B6BCD /* ImageNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkService.swift; sourceTree = "<group>"; };
 		41ED57552991A46A006B6BCD /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		41ED57572991A4A6006B6BCD /* ProxyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyService.swift; sourceTree = "<group>"; };
-		41ED575A2991A4DB006B6BCD /* FileManagerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerServiceProtocol.swift; sourceTree = "<group>"; };
+		41ED575A2991A4DB006B6BCD /* FileServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServiceProtocol.swift; sourceTree = "<group>"; };
 		41ED575C2991A507006B6BCD /* ImageNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		41ED575E2991A52A006B6BCD /* ImageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceProtocol.swift; sourceTree = "<group>"; };
 		41ED57602991A54D006B6BCD /* ProxyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyProtocol.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				41ED57592991A4C3006B6BCD /* Protocols */,
-				41ED57512991A2F5006B6BCD /* FileManagerService.swift */,
+				41ED57512991A2F5006B6BCD /* FileService.swift */,
 				41ED57532991A369006B6BCD /* ImageNetworkService.swift */,
 				41ED57552991A46A006B6BCD /* ImageService.swift */,
 				41ED57572991A4A6006B6BCD /* ProxyService.swift */,
@@ -227,7 +227,7 @@
 		41ED57592991A4C3006B6BCD /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				41ED575A2991A4DB006B6BCD /* FileManagerServiceProtocol.swift */,
+				41ED575A2991A4DB006B6BCD /* FileServiceProtocol.swift */,
 				41ED575C2991A507006B6BCD /* ImageNetworkServiceProtocol.swift */,
 				41ED575E2991A52A006B6BCD /* ImageServiceProtocol.swift */,
 				41ED57602991A54D006B6BCD /* ProxyProtocol.swift */,
@@ -374,7 +374,7 @@
 				41115354290AD69600ED22EA /* ActorData.swift in Sources */,
 				41ED57582991A4A6006B6BCD /* ProxyService.swift in Sources */,
 				4111534D290A9C9200ED22EA /* MoviesData.swift in Sources */,
-				41ED575B2991A4DB006B6BCD /* FileManagerServiceProtocol.swift in Sources */,
+				41ED575B2991A4DB006B6BCD /* FileServiceProtocol.swift in Sources */,
 				41115352290A9DC500ED22EA /* MovieViewModel.swift in Sources */,
 				4111534F290A9D2C00ED22EA /* NetworkService.swift in Sources */,
 				41ED576529928D72006B6BCD /* Movie.swift in Sources */,
@@ -385,7 +385,7 @@
 				41ED576729928E3E006B6BCD /* Actor.swift in Sources */,
 				41ED576329925765006B6BCD /* UIView+Extension.swift in Sources */,
 				41ED576D29938AF1006B6BCD /* AssemblyBuilderProtocol.swift in Sources */,
-				41ED57522991A2F5006B6BCD /* FileManagerService.swift in Sources */,
+				41ED57522991A2F5006B6BCD /* FileService.swift in Sources */,
 				41ED57692992DC8D006B6BCD /* MoviesDataStatus.swift in Sources */,
 				41ED577529939603006B6BCD /* MovieViewModelProtocol.swift in Sources */,
 				41ED57542991A369006B6BCD /* ImageNetworkService.swift in Sources */,

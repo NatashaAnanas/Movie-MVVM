@@ -1,10 +1,10 @@
-// FileManagerService.swift
+// FileService.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
 /// Сервис работы с файловым менеджером
-final class FileManagerService: FileManagerServiceProtocol {
+final class FileService: FileServiceProtocol {
     // MARK: Private Constants
 
     private enum FileManagerConstants {
@@ -62,7 +62,7 @@ final class FileManagerService: FileManagerServiceProtocol {
             return nil
         }
         return cachesDirectory.appendingPathComponent(
-            "\(FileManagerService.pathName)\(String(FileManagerConstants.separator))" +
+            "\(FileService.pathName)\(String(FileManagerConstants.separator))" +
                 "\(hashName)\(FileManagerConstants.fileFormat)"
         ).path
     }
