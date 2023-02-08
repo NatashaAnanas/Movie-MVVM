@@ -3,7 +3,7 @@
 
 import UIKit
 
-typealias NatashaDura = (Movie) -> Void
+typealias MovieHandler = (Movie) -> Void
 /// Главная страница c фильмами
 final class MovieViewController: UIViewController {
     // MARK: - Private Constant
@@ -16,7 +16,7 @@ final class MovieViewController: UIViewController {
         static let baseImageName = "фон4"
         static let baseImageFilmName = "film"
         static let newFilmString = "Новинки"
-        static let error = "Error"
+        static let errorText = "Error"
     }
 
     // MARK: - Private Visual Components
@@ -87,19 +87,19 @@ final class MovieViewController: UIViewController {
         return tableView
     }()
 
-    // MARK: - Private Properties
-
-    private var movieViewModel: MovieViewModelProtocol?
-    private var isPressed = true
-
     // MARK: - Public Properties
 
-    var toInfoVC: NatashaDura?
+    var toInfoVC: MovieHandler?
     var moviesDataStatus: MoviesDataStatus = .initial {
         didSet {
             view.setNeedsLayout()
         }
     }
+
+    // MARK: - Private Properties
+
+    private var movieViewModel: MovieViewModelProtocol?
+    private var isPressed = true
 
     // MARK: - Initializers
 
@@ -130,7 +130,7 @@ final class MovieViewController: UIViewController {
         case .success:
             fetchMoviesData()
         case .failure:
-            showAlert(title: nil, message: Constant.error) {}
+            showAlert(title: nil, message: Constant.errorText) {}
         }
     }
 
@@ -244,12 +244,10 @@ final class MovieViewController: UIViewController {
 
         switch sender.tag {
         case 0:
-            let url = NetworkService.Constants.allFilmURLString
-            movieViewModel?.urlMovie = url
+            movieViewModel?.urlMovie = NetworkService.Constants.allFilmURLString
             moviesDataStatus = .loading
         case 1:
-            let url = NetworkService.Constants.popularFilmURLString
-            movieViewModel?.urlMovie = url
+            movieViewModel?.urlMovie = NetworkService.Constants.popularFilmURLString
             moviesDataStatus = .loading
         default:
             break

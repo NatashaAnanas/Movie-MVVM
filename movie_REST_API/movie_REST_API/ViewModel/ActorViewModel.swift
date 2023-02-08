@@ -3,15 +3,7 @@
 
 import Foundation
 
-/// Протокол ActorViewModel
-protocol ActorViewModelProtocol {
-    func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> ())
-    func fetchActorsData(id: Int?, completion: @escaping ([Actor]) -> ())
-    func numberOfRowsInSection(section: Int) -> Int
-    func cellForRowAt(indexPath: IndexPath) -> Actor
-}
-
-/// Вью - модель InfoMovieViewController
+/// Вью - модель ActorMovieViewController
 final class ActorViewModel: ActorViewModelProtocol {
     // MARK: - Private Constant
 
@@ -26,6 +18,10 @@ final class ActorViewModel: ActorViewModelProtocol {
     private let imageService: ImageServiceProtocol?
     private var networkService: NetworkServiceProtocol?
     private var actors: [Actor] = []
+
+    // MARK: - Public Properties
+
+    var isPressed = false
 
     // MARK: - Initializers
 

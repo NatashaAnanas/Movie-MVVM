@@ -12,6 +12,7 @@ final class MovieViewCell: UITableViewCell {
         static let firstPartURLString = "https://image.tmdb.org/t/p/w500"
         static let errorDataTaskString = "DataTask error: "
         static let emptyDataString = "Empty Data"
+        static let filmImageName = "film"
     }
 
     // MARK: - Private Visual Components
@@ -172,16 +173,18 @@ final class MovieViewCell: UITableViewCell {
     }
 
     private func fetchImageData(url: String) {
-        movieViewModel?.fetchImage(imageURLPath: url) { result in
+        movieViewModel?.fetchImage(imageURLPath: url) { [weak self] result in
             switch result {
             case let .success(data):
                 DispatchQueue.main.async {
                     if let image = UIImage(data: data) {
-                        self.movieImageView.image = image
+                        self?.movieImageView.image = image
                     }
                 }
-            case let .failure(failure):
-                print(failure.localizedDescription)
+            case .failure:
+                DispatchQueue.main.async {
+                    self.movieImageView.image = UIImage(systemName: Constant.filmImageName)
+                }
             }
         }
     }

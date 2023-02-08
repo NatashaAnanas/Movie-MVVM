@@ -3,17 +3,6 @@
 
 import Foundation
 
-/// Протокол MovieViewModel
-protocol MovieViewModelProtocol {
-    var urlMovie: String { get set }
-    var moviesDataStatus: ((MoviesDataStatus) -> ())? { get set }
-    func setupColorRate(rating: Double?) -> Colors
-    func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> ())
-    func fetchMoviesData(completion: @escaping () -> ())
-    func numberOfRowsInSection(section: Int) -> Int
-    func cellForRowAt(indexPath: IndexPath) -> Movie
-}
-
 /// Вью - модель MovieViewController
 final class MovieViewModel: MovieViewModelProtocol {
     // MARK: - Private Constant
@@ -59,14 +48,14 @@ final class MovieViewModel: MovieViewModelProtocol {
     }
 
     func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> ()) {
-        imageService?.fetchImage(imageURLPath: imageURLPath, completion: { result in
+        imageService?.fetchImage(imageURLPath: imageURLPath, completion: { [weak self] result in
             switch result {
             case let .success(data):
                 completion(.success(data))
-                self.moviesDataStatus?(.success)
+                self?.moviesDataStatus?(.success)
             case let .failure(error):
                 completion(.failure(error))
-                self.moviesDataStatus?(.failure)
+                self?.moviesDataStatus?(.failure)
             }
         })
     }

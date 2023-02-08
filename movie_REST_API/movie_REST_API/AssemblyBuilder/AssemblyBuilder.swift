@@ -3,12 +3,6 @@
 
 import UIKit
 
-/// Протокол для AssemblyBuilder
-protocol AssemblyBuilderProtocol {
-    func createMovieModule() -> UIViewController
-    func createInfoMovieModule(movie: Movie) -> UIViewController
-}
-
 /// AssemblyBuilder
 final class AssemblyBuilder: AssemblyBuilderProtocol {
     // MARK: - Public methods
@@ -25,7 +19,7 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
         let networkService = NetworkService()
         let imageService = ImageService()
         let viewModel = ActorViewModel(networkService: networkService, imageService: imageService)
-        let viewController = InfoMovieViewController(actorViewModel: viewModel, movie: movie)
+        let viewController = ActorMovieViewController(actorViewModel: viewModel, movie: movie)
         return viewController
     }
 }

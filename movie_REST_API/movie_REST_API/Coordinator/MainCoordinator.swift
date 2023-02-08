@@ -45,7 +45,7 @@ final class MainCoordinator: BaseCoordinator {
 
     private func showDetailViewController(movie: Movie) {
         guard let controller = assemblyBuilder?.createInfoMovieModule(movie: movie)
-            as? InfoMovieViewController
+            as? ActorMovieViewController
         else { return }
         navController?.pushViewController(controller, animated: true)
     }

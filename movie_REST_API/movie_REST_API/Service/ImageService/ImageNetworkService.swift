@@ -5,7 +5,7 @@ import UIKit
 
 /// Сервис загрузки картинки из сети
 final class ImageNetworkService: ImageNetworkServiceProtocol {
-    // MARK: - Private Constant
+    // MARK: - Public Constant
 
     enum Constant {
         static let firstPartURLString = "https://image.tmdb.org/t/p/w500"

@@ -4,7 +4,7 @@
 import UIKit
 
 /// Страница выбранного фильма
-final class InfoMovieViewController: UIViewController {
+final class ActorMovieViewController: UIViewController {
     // MARK: - Private Constant
 
     private enum Constant {
@@ -76,15 +76,14 @@ final class InfoMovieViewController: UIViewController {
         return button
     }()
 
+    // MARK: - Public Properties
+
+    var movieId: Int?
+
     // MARK: - Private Properties
 
     private var actorViewModel: ActorViewModelProtocol?
-    private var isPressed = false
     private var movie: Movie?
-
-    // MARK: - Public Properties
-
-    var idNew: Int?
 
     // MARK: - Initializers
 
@@ -137,7 +136,7 @@ final class InfoMovieViewController: UIViewController {
                     }
                 }
             case let .failure(failure):
-                print(failure.localizedDescription)
+                self.showAlert(title: nil, message: failure.localizedDescription) {}
             }
         })
     }
@@ -146,7 +145,7 @@ final class InfoMovieViewController: UIViewController {
         view.backgroundColor = .black
         createBackground()
         addUI()
-        idNew = movie?.id
+        movieId = movie?.id
         createPresentImage(image: movie?.presentImageURLString)
         descpriptionTextView.text = movie?.description
         nameFilmLabel.text = movie?.title
@@ -228,28 +227,29 @@ final class InfoMovieViewController: UIViewController {
 
     private func loadMoviesData() {
         actorViewModel?.fetchActorsData(id: movie?.id, completion: { [weak self] _ in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                self?.imageCollectionView.reloadData()
+                self.imageCollectionView.reloadData()
             }
         })
     }
 
     @objc private func starAction() {
-        if isPressed == false {
+        if actorViewModel?.isPressed == false {
             showAlert(title: Constant.addFavouriteString, message: Constant.emptyString, handler: nil)
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: Constant.starFillImageName)
-            isPressed = true
+            actorViewModel?.isPressed = true
         } else {
             showAlert(title: Constant.deleteFavouriteString, message: Constant.emptyString, handler: nil)
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: Constant.starImageName)
-            isPressed = false
+            actorViewModel?.isPressed = false
         }
     }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
-extension InfoMovieViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ActorMovieViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         actorViewModel?.numberOfRowsInSection(section: section) ?? 1
     }

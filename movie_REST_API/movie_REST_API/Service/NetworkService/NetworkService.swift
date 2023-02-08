@@ -3,15 +3,9 @@
 
 import Foundation
 
-/// Протокол сетевого слоя
-protocol NetworkServiceProtocol {
-    func getMoviesData(moviesURL: String, completion: @escaping (Result<MoviesData?, Error>) -> ())
-    func getActorData(actorURL: String, completion: @escaping (Result<ActorData?, Error>) -> ())
-}
-
 /// Cетевой слой
 final class NetworkService: NetworkServiceProtocol {
-    // MARK: - Constant
+    // MARK: - Public Constant
 
     enum Constants {
         static let errorDataTaskString = "DataTask error: "

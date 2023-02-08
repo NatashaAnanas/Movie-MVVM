@@ -13,7 +13,7 @@ class BaseCoordinator {
 
     required init(assemblyBuilder: AssemblyBuilderProtocol, navController: UINavigationController? = nil) {}
 
-    // MARK: - Public Mhetods
+    // MARK: - Public Methods
 
     func start() {}
 
