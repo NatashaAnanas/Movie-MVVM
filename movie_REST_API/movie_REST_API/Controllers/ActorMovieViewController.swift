@@ -111,8 +111,7 @@ final class ActorMovieViewController: UIViewController {
 
     func createPresentImage(image: String?) {
         guard let imageString = image else { return }
-        let urlString = "\(Constant.firstPartURLString)\(imageString)"
-        fetchImageData(url: urlString)
+        fetchImageData(url: "\(Constant.firstPartURLString)\(imageString)")
     }
 
     // MARK: - Private Method
@@ -127,16 +126,16 @@ final class ActorMovieViewController: UIViewController {
     }
 
     private func fetchImageData(url: String) {
-        actorViewModel?.fetchImage(imageURLPath: url, completion: { result in
+        actorViewModel?.fetchImage(imageURLPath: url, completion: { [weak self] result in
             switch result {
             case let .success(data):
                 DispatchQueue.main.async {
                     if let image = UIImage(data: data) {
-                        self.movieImageView.image = image
+                        self?.movieImageView.image = image
                     }
                 }
             case let .failure(failure):
-                self.showAlert(title: nil, message: failure.localizedDescription) {}
+                self?.showAlert(title: nil, message: failure.localizedDescription) {}
             }
         })
     }

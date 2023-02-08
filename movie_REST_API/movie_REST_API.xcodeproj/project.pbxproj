@@ -43,6 +43,8 @@
 		41ED5770299390D0006B6BCD /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED576F299390D0006B6BCD /* NetworkServiceProtocol.swift */; };
 		41ED577229939554006B6BCD /* ActorViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED577129939553006B6BCD /* ActorViewModelProtocol.swift */; };
 		41ED577529939603006B6BCD /* MovieViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED577429939603006B6BCD /* MovieViewModelProtocol.swift */; };
+		41ED577929939E98006B6BCD /* MovieHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED577829939E98006B6BCD /* MovieHandler.swift */; };
+		41ED577B29939EE8006B6BCD /* VoidHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED577A29939EE8006B6BCD /* VoidHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		41ED576F299390D0006B6BCD /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		41ED577129939553006B6BCD /* ActorViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewModelProtocol.swift; sourceTree = "<group>"; };
 		41ED577429939603006B6BCD /* MovieViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModelProtocol.swift; sourceTree = "<group>"; };
+		41ED577829939E98006B6BCD /* MovieHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHandler.swift; sourceTree = "<group>"; };
+		41ED577A29939EE8006B6BCD /* VoidHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 		4111532929080EC400ED22EA /* movie_REST_API */ = {
 			isa = PBXGroup;
 			children = (
+				41ED577629939E6D006B6BCD /* Helper */,
 				41BBA1E22991822A0019B46E /* AssemblyBuilder */,
 				41BBA1D729914B0B0019B46E /* Coordinator */,
 				41549B4E290B37B200F8331A /* Extension */,
@@ -253,6 +258,23 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		41ED577629939E6D006B6BCD /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				41ED577729939E79006B6BCD /* Typealias */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		41ED577729939E79006B6BCD /* Typealias */ = {
+			isa = PBXGroup;
+			children = (
+				41ED577829939E98006B6BCD /* MovieHandler.swift */,
+				41ED577A29939EE8006B6BCD /* VoidHandler.swift */,
+			);
+			path = Typealias;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -370,6 +392,7 @@
 				41115349290A9BE100ED22EA /* MovieViewCell.swift in Sources */,
 				41115346290A9B1000ED22EA /* ActorMovieViewController.swift in Sources */,
 				41BBA1E1299182160019B46E /* AssemblyBuilder.swift in Sources */,
+				41ED577B29939EE8006B6BCD /* VoidHandler.swift in Sources */,
 				4111532F29080EC400ED22EA /* MovieViewController.swift in Sources */,
 				41115354290AD69600ED22EA /* ActorData.swift in Sources */,
 				41ED57582991A4A6006B6BCD /* ProxyService.swift in Sources */,
@@ -389,6 +412,7 @@
 				41ED57692992DC8D006B6BCD /* MoviesDataStatus.swift in Sources */,
 				41ED577529939603006B6BCD /* MovieViewModelProtocol.swift in Sources */,
 				41ED57542991A369006B6BCD /* ImageNetworkService.swift in Sources */,
+				41ED577929939E98006B6BCD /* MovieHandler.swift in Sources */,
 				41ED576B2992DCBB006B6BCD /* Colors.swift in Sources */,
 				41BBA1DB29914BF90019B46E /* BaseCoordinator.swift in Sources */,
 				41115358290ADDFC00ED22EA /* InfoMovieCell.swift in Sources */,

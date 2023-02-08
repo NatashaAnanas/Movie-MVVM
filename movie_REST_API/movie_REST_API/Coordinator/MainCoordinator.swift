@@ -3,7 +3,6 @@
 
 import UIKit
 
-typealias VoidHandler = () -> ()
 /// Главный координатор
 final class MainCoordinator: BaseCoordinator {
     // MARK: - Public Properties

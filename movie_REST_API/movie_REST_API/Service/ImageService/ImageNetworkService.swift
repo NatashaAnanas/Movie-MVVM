@@ -24,7 +24,7 @@ final class ImageNetworkService: ImageNetworkServiceProtocol {
                 completion(.failure(error))
                 return
             }
-            guard let response = response as? HTTPURLResponse else {
+            guard response is HTTPURLResponse else {
                 return
             }
             guard let data = data else {

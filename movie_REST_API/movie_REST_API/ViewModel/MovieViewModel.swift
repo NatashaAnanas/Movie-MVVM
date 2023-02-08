@@ -52,10 +52,8 @@ final class MovieViewModel: MovieViewModelProtocol {
             switch result {
             case let .success(data):
                 completion(.success(data))
-                self?.moviesDataStatus?(.success)
             case let .failure(error):
                 completion(.failure(error))
-                self?.moviesDataStatus?(.failure)
             }
         })
     }

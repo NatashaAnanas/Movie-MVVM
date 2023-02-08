@@ -3,7 +3,6 @@
 
 import UIKit
 
-typealias MovieHandler = (Movie) -> Void
 /// Главная страница c фильмами
 final class MovieViewController: UIViewController {
     // MARK: - Private Constant
