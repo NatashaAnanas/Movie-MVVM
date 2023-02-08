@@ -52,8 +52,8 @@ final class ActorViewModel: ActorViewModelProtocol {
                 guard let list = listOf else { return }
                 self?.actors = list.actors
                 completion(list.actors)
-            case let .failure(error):
-                print(Constant.errorString, error)
+            case .failure:
+                break
             }
         }
     }

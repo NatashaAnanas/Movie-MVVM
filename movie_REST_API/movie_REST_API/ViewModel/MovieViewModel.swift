@@ -48,7 +48,7 @@ final class MovieViewModel: MovieViewModelProtocol {
     }
 
     func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> ()) {
-        imageService?.fetchImage(imageURLPath: imageURLPath, completion: { [weak self] result in
+        imageService?.fetchImage(imageURLPath: imageURLPath, completion: { result in
             switch result {
             case let .success(data):
                 completion(.success(data))
@@ -66,8 +66,7 @@ final class MovieViewModel: MovieViewModelProtocol {
                 self?.movies = list.movies
                 self?.moviesDataStatus?(.success)
                 completion()
-            case let .failure(error):
-                print(Constant.errorString, error)
+            case .failure:
                 self?.moviesDataStatus?(.failure)
             }
         }
