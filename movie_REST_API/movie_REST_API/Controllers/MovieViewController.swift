@@ -98,7 +98,6 @@ final class MovieViewController: UIViewController {
     // MARK: - Private Properties
 
     private var movieViewModel: MovieViewModelProtocol?
-    private var isPressed = true
 
     // MARK: - Initializers
 
@@ -231,14 +230,14 @@ final class MovieViewController: UIViewController {
     }
 
     @objc private func chooseMovieButtonAction(sender: UIButton) {
-        if isPressed {
+        if (movieViewModel?.isPressed) != nil {
             popularButton.backgroundColor = .systemCyan
             rateButton.backgroundColor = .systemBlue
-            isPressed = false
+            movieViewModel?.isPressed = false
         } else {
             popularButton.backgroundColor = .systemBlue
             rateButton.backgroundColor = .systemCyan
-            isPressed = true
+            movieViewModel?.isPressed = true
         }
 
         switch sender.tag {

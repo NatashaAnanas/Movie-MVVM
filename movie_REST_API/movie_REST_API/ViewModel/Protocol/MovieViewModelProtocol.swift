@@ -6,6 +6,7 @@ import UIKit
 /// Протокол MovieViewModel
 protocol MovieViewModelProtocol {
     var urlMovie: String { get set }
+    var isPressed: Bool { get set }
     var moviesDataStatus: ((MoviesDataStatus) -> ())? { get set }
     func setupColorRate(rating: Double?) -> Colors
     func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> ())

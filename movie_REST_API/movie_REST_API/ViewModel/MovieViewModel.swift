@@ -14,6 +14,7 @@ final class MovieViewModel: MovieViewModelProtocol {
     // MARK: - Public Properties
 
     var urlMovie = String()
+    var isPressed = true
     var moviesDataStatus: ((MoviesDataStatus) -> ())?
 
     // MARK: - Private Properties

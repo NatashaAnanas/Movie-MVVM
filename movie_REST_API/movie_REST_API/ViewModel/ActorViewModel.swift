@@ -15,6 +15,7 @@ final class ActorViewModel: ActorViewModelProtocol {
 
     // MARK: - Public Properties
 
+    var movieId: Int?
     var isPressed = false
 
     // MARK: - Private Properties

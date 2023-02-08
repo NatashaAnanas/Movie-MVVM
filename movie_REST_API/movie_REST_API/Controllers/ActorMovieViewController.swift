@@ -76,10 +76,6 @@ final class ActorMovieViewController: UIViewController {
         return button
     }()
 
-    // MARK: - Public Properties
-
-    var movieId: Int?
-
     // MARK: - Private Properties
 
     private var actorViewModel: ActorViewModelProtocol?
@@ -144,7 +140,7 @@ final class ActorMovieViewController: UIViewController {
         view.backgroundColor = .black
         createBackground()
         addUI()
-        movieId = movie?.id
+        actorViewModel?.movieId = movie?.id
         createPresentImage(image: movie?.presentImageURLString)
         descpriptionTextView.text = movie?.description
         nameFilmLabel.text = movie?.title
