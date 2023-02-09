@@ -8,7 +8,9 @@ protocol MovieViewModelProtocol {
     var urlMovie: String { get set }
     var isPressed: Bool { get set }
     var moviesDataStatus: ((MoviesDataStatus) -> ())? { get set }
+    func saveKeychain(key: String)
     func setupColorRate(rating: Double?) -> Colors
+    func getKeychain() -> Bool
     func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> ())
     func fetchMoviesData(completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int

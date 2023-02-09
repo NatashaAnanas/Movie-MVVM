@@ -12,8 +12,12 @@ final class NetworkService: NetworkServiceProtocol {
         static let emptyResponseString = "Empty Response"
         static let statusCodeString = "Response status code: "
         static let emptyDataString = "Empty Data"
-        static let allFilmURLString =
-            "https://api.themoviedb.org/3/movie/popular?api_key=74b256bd9644791fa138aeb51482b3b8&language=en-US&page=1"
+        static let filmURLFirstText = "https://api.themoviedb.org/3/movie/popular?api_key="
+        static let filmURLSecondText = "8&language=en-US&page=1"
+        
+        static let allFilmURLString = "https://api.themoviedb.org/3/movie/popular?api_key=74b256bd9644791fa138aeb51482b3b8&language=en-US&page=1"
+        
+//            "https://api.themoviedb.org/3/movie/popular?api_key=74b256bd9644791fa138aeb51482b3b8&language=en-US&page=1"
         static let popularFilmURLString =
             "https://api.themoviedb.org/3/movie/top_rated?api_key=74b256bd9644791fa138aeb51482b3b8&language=en-US&page=1"
     }

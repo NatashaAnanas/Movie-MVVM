@@ -13,24 +13,48 @@ final class MovieViewModel: MovieViewModelProtocol {
     
     // MARK: - Public Properties
     
-    var urlMovie = String()
     var isPressed = true
     var moviesDataStatus: ((MoviesDataStatus) -> ())?
+    var urlMovie: String = "" {
+        didSet {
+            fetchMoviesData {
+                print("Обновление")
+            }
+        }
+    }
     
     // MARK: - Private Properties
     
     private let imageService: ImageServiceProtocol?
+    private let keychainService: KeychainServiceProtocol
     private var networkService: NetworkServiceProtocol?
     private var movies: [Movie] = []
     
     // MARK: - Initializers
     
-    init(networkService: NetworkServiceProtocol?, imageService: ImageServiceProtocol?) {
+    init(networkService: NetworkServiceProtocol?,
+         imageService: ImageServiceProtocol?,
+         keychainService: KeychainServiceProtocol) {
         self.networkService = networkService
         self.imageService = imageService
+        self.keychainService = keychainService
     }
     
     // MARK: - Public Methods
+    
+    func getKeychain() -> Bool {
+        let key = keychainService.getKey()
+        guard let key = key else {
+            return false
+        }
+        urlMovie = "\(NetworkService.Constants.filmURLFirstText)\(key)\(NetworkService.Constants.filmURLSecondText)"
+        return true
+    }
+    
+    func saveKeychain(key: String) {
+        keychainService.saveKey(key)
+        urlMovie = "\(NetworkService.Constants.filmURLFirstText)\(key)\(NetworkService.Constants.filmURLSecondText)"
+    }
     
     func setupColorRate(rating: Double?) -> Colors {
         guard let rate = rating else {

@@ -9,8 +9,11 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
 
     func createMovieModule() -> UIViewController {
         let networkService = NetworkService()
+        let keychainService = KeychainService()
         let imageService = ImageService()
-        let viewModel = MovieViewModel(networkService: networkService, imageService: imageService)
+        let viewModel = MovieViewModel(networkService: networkService,
+                                       imageService: imageService,
+                                       keychainService: keychainService)
         let viewController = MovieViewController(movieViewModel: viewModel)
         return viewController
     }

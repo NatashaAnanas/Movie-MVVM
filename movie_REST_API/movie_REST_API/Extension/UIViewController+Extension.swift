@@ -9,12 +9,13 @@ private enum Constant {
 }
 
 extension UIViewController {
-    typealias Closure = (() -> ())?
-    func showAlert(title: String?, message: String, handler: Closure) {
+    func showAlert(title: String?, message: String, handler: StringHandler) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertControllerAction = UIAlertAction(title: Constant.okTextString, style: .default) { _ in
-            handler?()
+            let text = alertController.textFields?.first?.text ?? ""
+            handler?(text)
         }
+        alertController.addTextField()
         alertController.addAction(alertControllerAction)
         present(alertController, animated: true)
     }

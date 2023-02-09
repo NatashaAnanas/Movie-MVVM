@@ -130,7 +130,7 @@ final class ActorMovieViewController: UIViewController {
                     }
                 }
             case let .failure(failure):
-                self?.showAlert(title: nil, message: failure.localizedDescription) {}
+                self?.showAlert(title: nil, message: failure.localizedDescription) { _ in }
             }
         })
     }

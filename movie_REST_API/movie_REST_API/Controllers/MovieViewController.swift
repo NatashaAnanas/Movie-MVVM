@@ -16,6 +16,7 @@ final class MovieViewController: UIViewController {
         static let baseImageFilmName = "film"
         static let newFilmString = "Новинки"
         static let errorText = "Error"
+        static let addKeyText = "Введите ключ:"
     }
 
     // MARK: - Private Visual Components
@@ -110,7 +111,9 @@ final class MovieViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getFromKeychain()
         createUI()
+        getFromKeychain()
         setupTableViewDelegats()
         setupAction()
         setConstraint()
@@ -122,11 +125,21 @@ final class MovieViewController: UIViewController {
         case .loading:
             fetchMoviesData()
         case .failure:
-            showAlert(title: nil, message: Constant.errorText) {}
+            showAlert(title: nil, message: Constant.errorText) { _ in }
         }
     }
 
     // MARK: - Private Method
+    
+    private func getFromKeychain() {
+        guard let  isShowAlert = movieViewModel?.getKeychain() else { return }
+        if !isShowAlert {
+            showAlert(title: nil, message: Constant.addKeyText) { key in
+                self.movieViewModel?.saveKeychain(key: key)
+            }
+            return
+        }
+    }
 
     private func setupAction() {
         popularButton.addTarget(self, action: #selector(chooseMovieButtonAction(sender:)), for: .touchUpInside)

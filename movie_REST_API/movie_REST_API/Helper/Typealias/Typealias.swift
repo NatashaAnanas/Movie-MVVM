@@ -3,3 +3,5 @@
 
 typealias MovieHandler = (Movie) -> Void
 typealias VoidHandler = (() -> ())
+typealias StringHandler = ((String) -> Void)?
+// typealias Closure = (() -> ())?
