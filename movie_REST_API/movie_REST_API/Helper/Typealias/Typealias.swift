@@ -1,7 +1,6 @@
 // Typealias.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 typealias MovieHandler = (Movie) -> Void
 typealias VoidHandler = (() -> ())
 typealias StringHandler = ((String) -> Void)?
-// typealias Closure = (() -> ())?

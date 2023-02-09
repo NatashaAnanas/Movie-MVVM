@@ -1,5 +1,5 @@
 // Colors.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 /// Энам c цветом для оценки рейтинга фильма
 enum Colors {

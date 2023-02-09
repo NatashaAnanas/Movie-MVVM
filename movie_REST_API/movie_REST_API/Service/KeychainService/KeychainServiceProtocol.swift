@@ -1,13 +1,10 @@
-//
-//  KeychainServiceProtocol.swift
-//  movie_REST_API
-//
-//  Created by Анастасия Козлова on 09.02.2023.
-//
+// KeychainServiceProtocol.swift
+// Copyright © Natasha Ananas. All rights reserved.
 
 /// Протокол Keychain сервис
 protocol KeychainServiceProtocol {
     // MARK: - Public Methods
-    func saveKey(_ key: String)
+
+    func saveKey(key: String)
     func getKey() -> String?
 }

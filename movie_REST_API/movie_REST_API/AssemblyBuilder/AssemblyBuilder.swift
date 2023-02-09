@@ -1,5 +1,5 @@
 // AssemblyBuilder.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 import UIKit
 
@@ -11,9 +11,13 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
         let networkService = NetworkService()
         let keychainService = KeychainService()
         let imageService = ImageService()
-        let viewModel = MovieViewModel(networkService: networkService,
-                                       imageService: imageService,
-                                       keychainService: keychainService)
+        let coreDataService = CoreDataService()
+        let viewModel = MovieViewModel(
+            networkService: networkService,
+            imageService: imageService,
+            keychainService: keychainService,
+            coreDataService: coreDataService
+        )
         let viewController = MovieViewController(movieViewModel: viewModel)
         return viewController
     }

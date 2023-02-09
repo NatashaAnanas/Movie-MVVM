@@ -1,8 +1,8 @@
 // ActorData.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 /// Модель массив Актеры
-struct ActorData: Decodable {
+struct ActorData: Codable {
     /// Массив актеров
     let actors: [Actor]
 
