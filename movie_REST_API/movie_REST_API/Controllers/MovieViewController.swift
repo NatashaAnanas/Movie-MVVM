@@ -5,21 +5,21 @@ import UIKit
 
 /// Главная страница c фильмами
 final class MovieViewController: UIViewController {
-    
     // MARK: - Private Constant
+
     private enum Constant {
         static let filmIdentifier = "film"
         static let allFilmString = "Все фильмы"
         static let popularFilmString = "Популярное"
         static let filmsString = "Фильмы"
-        static let allFilmURLString = "https://api.themoviedb.org/3/movie/popular?api_key=74b256bd9644791fa138aeb51482b3b8&language=en-US&page=1"
-        static let popularFilmURLString = "https://api.themoviedb.org/3/movie/top_rated?api_key=74b256bd9644791fa138aeb51482b3b8&language=en-US&page=1"
         static let baseImageName = "фон4"
         static let baseImageFilmName = "film"
         static let newFilmString = "Новинки"
+        static let errorText = "Error"
     }
-    
+
     // MARK: - Private Visual Components
+
     private let newButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemGreen
@@ -31,7 +31,7 @@ final class MovieViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     private let baseImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -47,7 +47,7 @@ final class MovieViewController: UIViewController {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.layer.shadowColor = UIColor.black.cgColor
-        
+
         button.layer.shadowRadius = 9.0
         button.layer.shadowOpacity = 0.8
         button.layer.shadowOffset = CGSize(width: 2.5, height: 2.5)
@@ -77,7 +77,7 @@ final class MovieViewController: UIViewController {
         return button
     }()
 
-    private let tableView: UITableView = {
+    private let movieTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundView = UIImageView(image: UIImage(named: Constant.baseImageName))
         tableView.register(MovieViewCell.self, forCellReuseIdentifier: Constant.filmIdentifier)
@@ -85,76 +85,77 @@ final class MovieViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
+
+    // MARK: - Public Properties
+
+    var toInfoVC: MovieHandler?
+    var moviesDataStatus: MoviesDataStatus = .loading {
+        didSet {
+            view.setNeedsLayout()
+        }
+    }
+
     // MARK: - Private Properties
-    private var isPressed = true
-    private var movieViewModel = MovieView()
+
+    private var movieViewModel: MovieViewModelProtocol?
+
+    // MARK: - Initializers
+
+    convenience init(movieViewModel: MovieViewModelProtocol) {
+        self.init()
+        self.movieViewModel = movieViewModel
+    }
 
     // MARK: - Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         createUI()
         setupTableViewDelegats()
         setupAction()
         setConstraint()
-        loadMoviesData()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        switch moviesDataStatus {
+        case .loading:
+            fetchMoviesData()
+        case .failure:
+            showAlert(title: nil, message: Constant.errorText) {}
+        }
     }
 
     // MARK: - Private Method
+
     private func setupAction() {
         popularButton.addTarget(self, action: #selector(chooseMovieButtonAction(sender:)), for: .touchUpInside)
         rateButton.addTarget(self, action: #selector(chooseMovieButtonAction(sender:)), for: .touchUpInside)
     }
 
-    @objc private func chooseMovieButtonAction(sender: UIButton) {
-        
-        if isPressed {
-            popularButton.backgroundColor = .systemCyan
-            rateButton.backgroundColor = .systemBlue
-            isPressed = false
-        } else {
-            popularButton.backgroundColor = .systemBlue
-            rateButton.backgroundColor = .systemCyan
-            isPressed = true
-        }
-        
-        switch sender.tag {
-        case 0:
-            let url = Constant.allFilmURLString
-            movieViewModel.urlMovie = url
-            loadMoviesData()
-
-        case 1:
-            let url = Constant.popularFilmURLString
-            movieViewModel.urlMovie = url
-            loadMoviesData()
-        default:
-            break
+    private func setupMoviesDataStatus() {
+        movieViewModel?.moviesDataStatus = { [weak self] status in
+            self?.moviesDataStatus = status
         }
     }
 
-    private func loadMoviesData() {
-        movieViewModel.fetchMoviesData { [weak self] in
+    private func fetchMoviesData() {
+        movieViewModel?.fetchMoviesData { [weak self] in
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.movieTableView.reloadData()
             }
         }
     }
-    
+
     private func createUI() {
+        setupMoviesDataStatus()
         title = Constant.filmsString
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:
-                                                                    UIColor.black]
-        
+        navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.black]
         createBackgroundImage()
-        
-        view.addSubview(baseImageView)
-        view.addSubview(tableView)
-        view.addSubview(popularButton)
-        view.addSubview(rateButton)
-        view.addSubview(newButton)
+        view.addSubviews(baseImageView, movieTableView, popularButton, rateButton, newButton)
     }
-    
+
     private func createBackgroundImage() {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: Constant.baseImageName)
@@ -163,10 +164,10 @@ final class MovieViewController: UIViewController {
     }
 
     private func setupTableViewDelegats() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        movieTableView.delegate = self
+        movieTableView.dataSource = self
     }
-    
+
     private func setConstraint() {
         setConstraintTableView()
         setConstraintButtons()
@@ -176,10 +177,10 @@ final class MovieViewController: UIViewController {
 
     private func setConstraintTableView() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: baseImageView.bottomAnchor, constant: 5),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+            movieTableView.topAnchor.constraint(equalTo: baseImageView.bottomAnchor, constant: 5),
+            movieTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            movieTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            movieTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
     }
 
@@ -198,30 +199,59 @@ final class MovieViewController: UIViewController {
             rateButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
-    
+
     private func setConstraintImage() {
         NSLayoutConstraint.activate([
             baseImageView.topAnchor.constraint(equalTo: rateButton.bottomAnchor, constant: 10),
             baseImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             baseImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             baseImageView.heightAnchor.constraint(equalToConstant: 200)
-            ])
+        ])
     }
-    
+
     private func setConstraintNewButton() {
         NSLayoutConstraint.activate([
             newButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
             newButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             newButton.heightAnchor.constraint(equalToConstant: 35),
             newButton.widthAnchor.constraint(equalToConstant: 120)
-            ])
+        ])
+    }
+
+    private func goToInfoVC(indexPath: IndexPath) {
+        guard let movie = movieViewModel?.cellForRowAt(indexPath: indexPath) else { return }
+        toInfoVC?(movie)
+    }
+
+    @objc private func chooseMovieButtonAction(sender: UIButton) {
+        if (movieViewModel?.isPressed) != nil {
+            popularButton.backgroundColor = .systemCyan
+            rateButton.backgroundColor = .systemBlue
+            movieViewModel?.isPressed = false
+        } else {
+            popularButton.backgroundColor = .systemBlue
+            rateButton.backgroundColor = .systemCyan
+            movieViewModel?.isPressed = true
+        }
+
+        switch sender.tag {
+        case 0:
+            movieViewModel?.urlMovie = NetworkService.Constants.allFilmURLString
+            moviesDataStatus = .loading
+        case 1:
+            movieViewModel?.urlMovie = NetworkService.Constants.popularFilmURLString
+            moviesDataStatus = .loading
+        default:
+            break
+        }
     }
 }
 
-// MARK: - Подписываемся на делегаты UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movieViewModel.numberOfRowsInSection(section: section)
+        movieViewModel?.numberOfRowsInSection(section: section) ?? 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -230,22 +260,12 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
             for: indexPath
         ) as? MovieViewCell else { return UITableViewCell() }
 
-        let movie = movieViewModel.cellForRowAt(indexPath: indexPath)
-        cell.setCellWithValues(movie)
+        guard let movie = movieViewModel?.cellForRowAt(indexPath: indexPath) else { return UITableViewCell() }
+        cell.setCellWithValues(movie, movieViewModel: movieViewModel)
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
         cell.selectionStyle = .none
         cell.backgroundColor = .none
         return cell
-    }
-    
-    private func goToInfoVC(indexPath: IndexPath) {
-        let secondVC = InfoMovieViewController()
-        let movie = movieViewModel.cellForRowAt(indexPath: indexPath)
-        secondVC.idNew = movie.id
-        secondVC.createPresentImage(image: movie.presentImageURLString)
-        secondVC.descpriptionTextView.text = movie.description
-        secondVC.nameFilmLabel.text = movie.title
-        navigationController?.pushViewController(secondVC, animated: true)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
