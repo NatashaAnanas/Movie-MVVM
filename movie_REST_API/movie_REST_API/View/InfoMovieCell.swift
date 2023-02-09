@@ -89,15 +89,13 @@ final class InfoMovieCell: UICollectionViewCell {
 
     private func fetchImageData(url: String) {
         actorViewModel?.fetchImage(imageURLPath: url, completion: { [weak self] result in
-            switch result {
-            case let .success(data):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case let .success(data):
                     if let image = UIImage(data: data) {
                         self?.personImageView.image = image
                     }
-                }
-            case .failure:
-                DispatchQueue.main.async {
+                case .failure:
                     self?.personImageView.image = UIImage(systemName: Constant.filmImageName)
                 }
             }

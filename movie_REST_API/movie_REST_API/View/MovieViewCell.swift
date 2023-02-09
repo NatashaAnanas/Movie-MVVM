@@ -168,21 +168,19 @@ final class MovieViewCell: UITableViewCell {
         }
 
         guard let imageString = poster else { return }
-        let urlString = "\(ImageNetworkService.Constant.firstPartURLString)\(imageString)"
-        fetchImageData(url: urlString)
+//        let urlString = "\(ImageNetworkService.Constant.firstPartURLString)\(imageString)"
+        fetchImageData(url: imageString)
     }
 
     private func fetchImageData(url: String) {
         movieViewModel?.fetchImage(imageURLPath: url) { [weak self] result in
-            switch result {
-            case let .success(data):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case let .success(data):
                     if let image = UIImage(data: data) {
                         self?.movieImageView.image = image
                     }
-                }
-            case .failure:
-                DispatchQueue.main.async {
+                case .failure:
                     self?.movieImageView.image = UIImage(systemName: Constant.filmImageName)
                 }
             }

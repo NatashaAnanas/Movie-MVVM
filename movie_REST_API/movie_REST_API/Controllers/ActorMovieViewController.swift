@@ -11,7 +11,6 @@ final class ActorMovieViewController: UIViewController {
         static let cellIdentifier = "cell"
         static let errorDataTaskString = "DataTask error: "
         static let emptyDataString = "Empty Data"
-        static let firstPartURLString = "https://image.tmdb.org/t/p/w500"
         static let starImageName = "star"
         static let starFillImageName = "star.fill"
         static let emptyString = ""
@@ -107,7 +106,7 @@ final class ActorMovieViewController: UIViewController {
 
     func createPresentImage(image: String?) {
         guard let imageString = image else { return }
-        fetchImageData(url: "\(Constant.firstPartURLString)\(imageString)")
+        fetchImageData(url: "\(ImageNetworkService.Constant.firstPartURLString)\(imageString)")
     }
 
     // MARK: - Private Method

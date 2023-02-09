@@ -30,8 +30,7 @@ class BaseCoordinator {
             let coordinator = coordinator
         else { return }
         for (index, element) in childCoordinators.reversed().enumerated() where
-            element === coordinator
-        {
+            element === coordinator {
             childCoordinators.remove(at: index)
             break
         }

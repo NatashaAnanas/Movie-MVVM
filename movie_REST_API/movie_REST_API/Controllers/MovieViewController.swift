@@ -89,7 +89,7 @@ final class MovieViewController: UIViewController {
     // MARK: - Public Properties
 
     var toInfoVC: MovieHandler?
-    var moviesDataStatus: MoviesDataStatus = .initial {
+    var moviesDataStatus: MoviesDataStatus = .loading {
         didSet {
             view.setNeedsLayout()
         }
@@ -116,16 +116,10 @@ final class MovieViewController: UIViewController {
         setConstraint()
     }
 
-    // MARK: - Public Method
-
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         switch moviesDataStatus {
-        case .initial:
-            fetchMoviesData()
         case .loading:
-            fetchMoviesData()
-        case .success:
             fetchMoviesData()
         case .failure:
             showAlert(title: nil, message: Constant.errorText) {}
