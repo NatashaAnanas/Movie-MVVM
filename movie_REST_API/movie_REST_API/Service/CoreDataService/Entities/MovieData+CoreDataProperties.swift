@@ -9,7 +9,6 @@ public extension MovieData {
     @nonobjc class func fetchRequest() -> NSFetchRequest<MovieData> {
         NSFetchRequest<MovieData>(entityName: "MovieData")
     }
-
     @NSManaged var id: Int64
     @NSManaged var title: String?
     @NSManaged var year: String?
