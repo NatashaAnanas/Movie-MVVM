@@ -40,8 +40,11 @@ final class CoreDataService: CoreDataServiceProtocol {
     }
 
     // MARK: - Private Methods
-
-    func saveMovie(entity: NSEntityDescription, context: NSManagedObjectContext?, movies: [Movie], type: TypeMovie) {
+    
+    private func saveMovie(entity: NSEntityDescription,
+                           context: NSManagedObjectContext?,
+                           movies: [Movie],
+                           type: TypeMovie) {
         for movie in movies {
             let managerObject = MovieData(entity: entity, insertInto: context)
             saveType(managerObject: managerObject, type: type)
@@ -55,7 +58,7 @@ final class CoreDataService: CoreDataServiceProtocol {
         }
     }
 
-    func getMovie(allMovies: [MovieData], type: TypeMovie) -> [Movie]? {
+    private func getMovie(allMovies: [MovieData], type: TypeMovie) -> [Movie]? {
         var movies: [Movie] = []
         for movie in allMovies {
             switch type {
@@ -69,7 +72,7 @@ final class CoreDataService: CoreDataServiceProtocol {
         }
         return movies
     }
-
+    
     private func saveType(managerObject: MovieData, type: TypeMovie) {
         switch type {
         case .all:
