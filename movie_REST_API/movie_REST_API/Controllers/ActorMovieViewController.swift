@@ -1,5 +1,5 @@
 // ActorMovieViewController.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 import UIKit
 
@@ -106,7 +106,7 @@ final class ActorMovieViewController: UIViewController {
 
     func createPresentImage(image: String?) {
         guard let imageString = image else { return }
-        fetchImageData(url: "\(ImageNetworkService.Constant.firstPartURLString)\(imageString)")
+        fetchImageData(url: imageString)
     }
 
     // MARK: - Private Method
@@ -130,7 +130,7 @@ final class ActorMovieViewController: UIViewController {
                     }
                 }
             case let .failure(failure):
-                self?.showAlert(title: nil, message: failure.localizedDescription) {}
+                self?.showAlert(title: nil, message: failure.localizedDescription) { _ in }
             }
         })
     }

@@ -1,5 +1,5 @@
 // NetworkServiceProtocol.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 /// Протокол сетевого слоя
 protocol NetworkServiceProtocol {

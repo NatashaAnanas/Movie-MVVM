@@ -1,8 +1,8 @@
 // MoviesData.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 /// Moдель массив фильмов
-struct MoviesData: Decodable {
+struct MoviesData: Codable {
     /// Массив с фильмами
     let movies: [Movie]
 

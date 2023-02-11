@@ -1,5 +1,5 @@
 // SceneDelegate.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 import UIKit
 
@@ -17,6 +17,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         window.makeKeyAndVisible()

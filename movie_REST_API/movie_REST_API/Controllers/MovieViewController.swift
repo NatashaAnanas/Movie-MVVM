@@ -1,9 +1,10 @@
 // MovieViewController.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 import UIKit
 
 /// Главная страница c фильмами
+
 final class MovieViewController: UIViewController {
     // MARK: - Private Constant
 
@@ -16,6 +17,7 @@ final class MovieViewController: UIViewController {
         static let baseImageFilmName = "film"
         static let newFilmString = "Новинки"
         static let errorText = "Error"
+        static let addKeyText = "Введите ключ:"
     }
 
     // MARK: - Private Visual Components
@@ -89,7 +91,7 @@ final class MovieViewController: UIViewController {
     // MARK: - Public Properties
 
     var toInfoVC: MovieHandler?
-    var moviesDataStatus: MoviesDataStatus = .loading {
+    var moviesDataStatus: MoviesDataStatus = .loadingAll {
         didSet {
             view.setNeedsLayout()
         }
@@ -110,6 +112,7 @@ final class MovieViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getFromKeychain()
         createUI()
         setupTableViewDelegats()
         setupAction()
@@ -118,15 +121,31 @@ final class MovieViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        switch moviesDataStatus {
-        case .loading:
-            fetchMoviesData()
-        case .failure:
-            showAlert(title: nil, message: Constant.errorText) {}
-        }
+        getMoviesDataStatus()
     }
 
     // MARK: - Private Method
+    
+    private func getMoviesDataStatus() {
+        switch moviesDataStatus {
+        case .loadingPopular:
+            fetchMoviesData(type: .popular)
+        case .loadingAll:
+            fetchMoviesData(type: .all)
+        case .failure:
+            showAlert(title: nil, message: Constant.errorText) { _ in }
+        }
+    }
+
+    private func getFromKeychain() {
+        guard let isShowAlert = movieViewModel?.getKeychain() else { return }
+        if !isShowAlert {
+            showAlert(title: nil, message: Constant.addKeyText) { key in
+                self.movieViewModel?.saveKeychain(key: key)
+            }
+            return
+        }
+    }
 
     private func setupAction() {
         popularButton.addTarget(self, action: #selector(chooseMovieButtonAction(sender:)), for: .touchUpInside)
@@ -139,14 +158,14 @@ final class MovieViewController: UIViewController {
         }
     }
 
-    private func fetchMoviesData() {
-        movieViewModel?.fetchMoviesData { [weak self] in
+    private func fetchMoviesData(type: TypeMovie) {
+        movieViewModel?.fetchMoviesData(type: type) { [weak self] in
             DispatchQueue.main.async {
                 self?.movieTableView.reloadData()
             }
         }
     }
-
+    
     private func createUI() {
         setupMoviesDataStatus()
         title = Constant.filmsString
@@ -237,10 +256,10 @@ final class MovieViewController: UIViewController {
         switch sender.tag {
         case 0:
             movieViewModel?.urlMovie = NetworkService.Constants.allFilmURLString
-            moviesDataStatus = .loading
+            moviesDataStatus = .loadingAll
         case 1:
             movieViewModel?.urlMovie = NetworkService.Constants.popularFilmURLString
-            moviesDataStatus = .loading
+            moviesDataStatus = .loadingPopular
         default:
             break
         }
@@ -250,6 +269,7 @@ final class MovieViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movieViewModel?.numberOfRowsInSection(section: section) ?? 1
     }

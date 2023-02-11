@@ -1,5 +1,5 @@
 // AssemblyBuilder.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 import UIKit
 
@@ -9,16 +9,30 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
 
     func createMovieModule() -> UIViewController {
         let networkService = NetworkService()
-        let imageService = ImageService()
-        let viewModel = MovieViewModel(networkService: networkService, imageService: imageService)
+        let keychainService = KeychainService()
+        let imageNetworkService = ImageNetworkService()
+        let fileService = FileService()
+        let proxyService = ProxyService(imageNetworkService: imageNetworkService, fileService: fileService)
+        let imageService = ImageService(proxyService: proxyService)
+        let coreDataService = CoreDataService()
+        let viewModel = MovieViewModel(
+            networkService: networkService,
+            imageService: imageService,
+            keychainService: keychainService,
+            coreDataService: coreDataService
+        )
         let viewController = MovieViewController(movieViewModel: viewModel)
         return viewController
     }
 
     func createInfoMovieModule(movie: Movie) -> UIViewController {
         let networkService = NetworkService()
-        let imageService = ImageService()
-        let viewModel = ActorViewModel(networkService: networkService, imageService: imageService)
+        let imageNetworkService = ImageNetworkService()
+        let fileService = FileService()
+        let proxyService = ProxyService(imageNetworkService: imageNetworkService, fileService: fileService)
+        let imageService = ImageService(proxyService: proxyService)
+        let viewModel = ActorViewModel(networkService: networkService,
+                                       imageService: imageService)
         let viewController = ActorMovieViewController(actorViewModel: viewModel, movie: movie)
         return viewController
     }

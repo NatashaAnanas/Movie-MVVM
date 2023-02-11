@@ -1,13 +1,13 @@
 // Movie.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Natasha Ananas. All rights reserved.
 
 /// Moдель фильмы
-struct Movie: Decodable {
+struct Movie: Codable {
     /// Идентификатор фильма
     let id: Int?
     /// Название фильма
     let title: String?
-    /// дДта релиза фильма
+    /// Дата релиза фильма
     let year: String?
     /// Рейтинг фильма
     let rate: Double?
