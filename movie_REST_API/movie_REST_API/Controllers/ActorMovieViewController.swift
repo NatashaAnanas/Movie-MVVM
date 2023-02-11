@@ -106,7 +106,7 @@ final class ActorMovieViewController: UIViewController {
 
     func createPresentImage(image: String?) {
         guard let imageString = image else { return }
-        fetchImageData(url: "\(ImageNetworkService.Constant.firstPartURLString)\(imageString)")
+        fetchImageData(url: imageString)
     }
 
     // MARK: - Private Method

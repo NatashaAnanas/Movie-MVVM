@@ -3,11 +3,12 @@
 
 import UIKit
 
-/// Расширение для UIViewController(Alert)
+// MARK: - Private Constants
 private enum Constant {
     static let okTextString = "OK"
 }
 
+/// Расширение для UIViewController(Alert)
 extension UIViewController {
     func showAlert(title: String?, message: String, handler: StringHandler) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

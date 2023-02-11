@@ -3,8 +3,6 @@
 
 /// Протокол Keychain сервис
 protocol KeychainServiceProtocol {
-    // MARK: - Public Methods
-
     func saveKey(key: String)
     func getKey() -> String?
 }

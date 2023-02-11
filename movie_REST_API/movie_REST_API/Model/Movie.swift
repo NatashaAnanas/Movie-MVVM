@@ -7,7 +7,7 @@ struct Movie: Codable {
     let id: Int?
     /// Название фильма
     let title: String?
-    /// дДта релиза фильма
+    /// Дата релиза фильма
     let year: String?
     /// Рейтинг фильма
     let rate: Double?

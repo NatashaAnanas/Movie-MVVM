@@ -12,7 +12,8 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
         let keychainService = KeychainService()
         let imageNetworkService = ImageNetworkService()
         let fileService = FileService()
-        let imageService = ImageService(imageNetworkService: imageNetworkService, fileService: fileService)
+        let proxyService = ProxyService(imageNetworkService: imageNetworkService, fileService: fileService)
+        let imageService = ImageService(proxyService: proxyService)
         let coreDataService = CoreDataService()
         let viewModel = MovieViewModel(
             networkService: networkService,
@@ -28,8 +29,10 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
         let networkService = NetworkService()
         let imageNetworkService = ImageNetworkService()
         let fileService = FileService()
-        let imageService = ImageService(imageNetworkService: imageNetworkService, fileService: fileService)
-        let viewModel = ActorViewModel(networkService: networkService, imageService: imageService)
+        let proxyService = ProxyService(imageNetworkService: imageNetworkService, fileService: fileService)
+        let imageService = ImageService(proxyService: proxyService)
+        let viewModel = ActorViewModel(networkService: networkService,
+                                       imageService: imageService)
         let viewController = ActorMovieViewController(actorViewModel: viewModel, movie: movie)
         return viewController
     }

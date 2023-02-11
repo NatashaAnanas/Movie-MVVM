@@ -5,9 +5,9 @@ import UIKit
 
 /// Сервис загрузки картинки из сети
 final class ImageNetworkService: ImageNetworkServiceProtocol {
-    // MARK: - Public Constant
+    // MARK: - Private Constant
 
-    enum Constant {
+    private enum Constant {
         static let firstPartURLString = "https://image.tmdb.org/t/p/w500"
     }
 
@@ -18,7 +18,8 @@ final class ImageNetworkService: ImageNetworkServiceProtocol {
     // MARK: - Public methods
 
     func fetchImage(imageUrl: String, completion: @escaping (Result<Data, Error>) -> ()) {
-        guard let url = URL(string: imageUrl) else { return }
+        let URLImage = "\(Constant.firstPartURLString)\(imageUrl)"
+        guard let url = URL(string: URLImage) else { return }
         dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))

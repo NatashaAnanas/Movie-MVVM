@@ -78,7 +78,7 @@ final class MovieViewModel: MovieViewModelProtocol {
 
     func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> ()) {
         imageService?.fetchImage(
-            imageURLPath: "\(ImageNetworkService.Constant.firstPartURLString)\(imageURLPath)",
+            imageURLPath: imageURLPath,
             completion: { result in
                 switch result {
                 case let .success(data):
@@ -90,7 +90,7 @@ final class MovieViewModel: MovieViewModelProtocol {
         )
     }
 
-    func fetchMoviesData(type: TypeMovie, completion: @escaping () -> ()) {
+    func fetchMoviesData(type: TypeMovie, completion: @escaping VoidHandler) {
         if let coreDataMovies = coreDataService.getMovieCoreData(type: type), !coreDataMovies.isEmpty {
             movies = coreDataMovies
             completion()

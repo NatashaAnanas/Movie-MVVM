@@ -7,20 +7,19 @@ import UIKit
 final class ImageService: ImageServiceProtocol {
     // MARK: - Public properties
 
-    let imageNetworkService: ImageNetworkServiceProtocol
-    let fileService: FileServiceProtocol
+    let proxyService: ProxyProtocol
     
     // MARK: - Initializer
-
-    init(imageNetworkService: ImageNetworkServiceProtocol, fileService: FileServiceProtocol) {
-        self.imageNetworkService = imageNetworkService
-        self.fileService = fileService
+    
+    init(proxyService: ProxyProtocol) {
+        self.proxyService = proxyService
     }
 
     // MARK: - Public methods
 
     func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let proxy = ProxyService(imageNetworkService: imageNetworkService, fileService: fileService)
+        let proxy = ProxyService(imageNetworkService: proxyService.imageNetworkService,
+                                 fileService: proxyService.fileService)
         proxy.loadImage(by: imageURLPath) { result in
             switch result {
             case let .success(image):

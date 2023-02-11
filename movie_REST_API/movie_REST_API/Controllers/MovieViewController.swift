@@ -4,6 +4,7 @@
 import UIKit
 
 /// Главная страница c фильмами
+
 final class MovieViewController: UIViewController {
     // MARK: - Private Constant
 
@@ -120,6 +121,12 @@ final class MovieViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        getMoviesDataStatus()
+    }
+
+    // MARK: - Private Method
+    
+    private func getMoviesDataStatus() {
         switch moviesDataStatus {
         case .loadingPopular:
             fetchMoviesData(type: .popular)
@@ -129,8 +136,6 @@ final class MovieViewController: UIViewController {
             showAlert(title: nil, message: Constant.errorText) { _ in }
         }
     }
-
-    // MARK: - Private Method
 
     private func getFromKeychain() {
         guard let isShowAlert = movieViewModel?.getKeychain() else { return }
@@ -160,7 +165,7 @@ final class MovieViewController: UIViewController {
             }
         }
     }
-
+    
     private func createUI() {
         setupMoviesDataStatus()
         title = Constant.filmsString
@@ -264,6 +269,7 @@ final class MovieViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movieViewModel?.numberOfRowsInSection(section: section) ?? 1
     }
