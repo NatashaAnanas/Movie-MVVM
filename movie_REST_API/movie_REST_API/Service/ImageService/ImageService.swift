@@ -7,8 +7,15 @@ import UIKit
 final class ImageService: ImageServiceProtocol {
     // MARK: - Public properties
 
-    let imageNetworkService = ImageNetworkService()
-    let fileService = FileService()
+    let imageNetworkService: ImageNetworkServiceProtocol
+    let fileService: FileServiceProtocol
+    
+    // MARK: - Initializer
+
+    init(imageNetworkService: ImageNetworkServiceProtocol, fileService: FileServiceProtocol) {
+        self.imageNetworkService = imageNetworkService
+        self.fileService = fileService
+    }
 
     // MARK: - Public methods
 
