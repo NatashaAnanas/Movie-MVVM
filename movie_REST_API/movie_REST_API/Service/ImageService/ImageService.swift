@@ -8,9 +8,9 @@ final class ImageService: ImageServiceProtocol {
     // MARK: - Public properties
 
     let proxyService: ProxyProtocol
-    
+
     // MARK: - Initializer
-    
+
     init(proxyService: ProxyProtocol) {
         self.proxyService = proxyService
     }
@@ -18,8 +18,10 @@ final class ImageService: ImageServiceProtocol {
     // MARK: - Public methods
 
     func fetchImage(imageURLPath: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let proxy = ProxyService(imageNetworkService: proxyService.imageNetworkService,
-                                 fileService: proxyService.fileService)
+        let proxy = ProxyService(
+            imageNetworkService: proxyService.imageNetworkService,
+            fileService: proxyService.fileService
+        )
         proxy.loadImage(by: imageURLPath) { result in
             switch result {
             case let .success(image):

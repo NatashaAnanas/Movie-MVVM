@@ -31,8 +31,10 @@ final class AssemblyBuilder: AssemblyBuilderProtocol {
         let fileService = FileService()
         let proxyService = ProxyService(imageNetworkService: imageNetworkService, fileService: fileService)
         let imageService = ImageService(proxyService: proxyService)
-        let viewModel = ActorViewModel(networkService: networkService,
-                                       imageService: imageService)
+        let viewModel = ActorViewModel(
+            networkService: networkService,
+            imageService: imageService
+        )
         let viewController = ActorMovieViewController(actorViewModel: viewModel, movie: movie)
         return viewController
     }
