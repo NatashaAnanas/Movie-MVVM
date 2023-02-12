@@ -10,13 +10,9 @@ final class NetworkServiceTests: XCTestCase {
     // MARK: - Private Constants
 
     private enum Constants {
-        static let mockApiKeyText = "mockApiKeyText"
-        static let mockPosterPathText = "mockPosterPathText"
         static let emptyText = ""
         static let mockMoviesURL = "mockMoviesURL"
         static let mockActorsURL = "mockActorsURL"
-        static let mockIdNumber = 505_642
-        static let timeoutNumber = 10.0
     }
 
     // MARK: - Private Properties
