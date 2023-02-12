@@ -37,6 +37,8 @@
 		41713F792999600600795C52 /* FileServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41713F782999600600795C52 /* FileServiceTests.swift */; };
 		41713F7B29996B6600795C52 /* AssemblyBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41713F7A29996B6600795C52 /* AssemblyBuilderTests.swift */; };
 		41713F7D29996E0400795C52 /* MockAssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41713F7C29996E0400795C52 /* MockAssemblyBuilder.swift */; };
+		41713FA129997F5D00795C52 /* MockCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41713FA029997F5D00795C52 /* MockCoreDataService.swift */; };
+		41713FA329997FA200795C52 /* CoreDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41713FA229997FA200795C52 /* CoreDataServiceTests.swift */; };
 		41BBA1D929914B290019B46E /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BBA1D829914B290019B46E /* ApplicationCoordinator.swift */; };
 		41BBA1DB29914BF90019B46E /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BBA1DA29914BF90019B46E /* BaseCoordinator.swift */; };
 		41BBA1DF29914CCB0019B46E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BBA1DE29914CCB0019B46E /* MainCoordinator.swift */; };
@@ -119,6 +121,8 @@
 		41713F782999600600795C52 /* FileServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServiceTests.swift; sourceTree = "<group>"; };
 		41713F7A29996B6600795C52 /* AssemblyBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilderTests.swift; sourceTree = "<group>"; };
 		41713F7C29996E0400795C52 /* MockAssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAssemblyBuilder.swift; sourceTree = "<group>"; };
+		41713FA029997F5D00795C52 /* MockCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataService.swift; sourceTree = "<group>"; };
+		41713FA229997FA200795C52 /* CoreDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceTests.swift; sourceTree = "<group>"; };
 		418005CDD39487068A7FF44E /* Pods_movie_REST_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_movie_REST_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BBA1D829914B290019B46E /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		41BBA1DA29914BF90019B46E /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 				41713F762999582000795C52 /* NetworkServiceTests.swift */,
 				41713F782999600600795C52 /* FileServiceTests.swift */,
 				41713F7A29996B6600795C52 /* AssemblyBuilderTests.swift */,
+				41713FA229997FA200795C52 /* CoreDataServiceTests.swift */,
 			);
 			path = MovieUnitTests;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				41713F7029994C8100795C52 /* MockImageService.swift */,
 				41713F74299952BC00795C52 /* MockNetworkService.swift */,
 				41713F7C29996E0400795C52 /* MockAssemblyBuilder.swift */,
+				41713FA029997F5D00795C52 /* MockCoreDataService.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -716,6 +722,7 @@
 			files = (
 				41713F6329993BC100795C52 /* KeychainServiceTests.swift in Sources */,
 				41713F75299952BC00795C52 /* MockNetworkService.swift in Sources */,
+				41713FA129997F5D00795C52 /* MockCoreDataService.swift in Sources */,
 				41713F772999582100795C52 /* NetworkServiceTests.swift in Sources */,
 				41713F792999600600795C52 /* FileServiceTests.swift in Sources */,
 				41713F6A2999414000795C52 /* ImageServiceTests.swift in Sources */,
@@ -724,6 +731,7 @@
 				41713F6D2999426500795C52 /* MockKeychainService.swift in Sources */,
 				41713F7B29996B6600795C52 /* AssemblyBuilderTests.swift in Sources */,
 				41713F732999516200795C52 /* ProxyServiceTests.swift in Sources */,
+				41713FA329997FA200795C52 /* CoreDataServiceTests.swift in Sources */,
 				41713F7129994C8100795C52 /* MockImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

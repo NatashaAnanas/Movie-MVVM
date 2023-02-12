@@ -1,12 +1,17 @@
-// MockNetworkService.swift
-// Copyright © Natasha Ananas. All rights reserved.
+//
+//  MockCoreDataService.swift
+//  MovieUnitTests
+//
+//  Created by Анастасия Козлова on 12.02.2023.
+//
 
 import XCTest
 
 @testable import movie_REST_API
 
 /// Mock NetworkService
-final class MockNetworkService: NetworkServiceProtocol {
+final class MockCoreDataService: CoreDataServiceProtocol {
+    
     // MARK: - Private Constants
 
     private enum Constants {
@@ -19,7 +24,7 @@ final class MockNetworkService: NetworkServiceProtocol {
 
     // MARK: - Private Properties
 
-    private let mockMoviesData = MoviesData(movies: [Movie(
+    private let mockMovies = [Movie(
         id: Constants.mockIdInt,
         title: Constants.mockStringText,
         year: Constants.mockStringText,
@@ -27,20 +32,16 @@ final class MockNetworkService: NetworkServiceProtocol {
         posterImageURLString: Constants.mockStringText,
         description: Constants.mockStringText,
         presentImageURLString: Constants.mockStringText
-    )])
-
-    private let mockActorData = ActorData(actors: [Actor(
-        name: Constants.mockStringText,
-        actorImageURLString: Constants.mockStringText
-    )])
+    )]
+    private var mockEmptyMovies: [Movie]?
 
     // MARK: - Public Methods
 
-    func getMoviesData(moviesURL: String, completion: @escaping (Result<movie_REST_API.MoviesData?, Error>) -> ()) {
-        completion(.success(mockMoviesData))
+    func saveMovieCoreData(type: movie_REST_API.TypeMovie, movies: [movie_REST_API.Movie]) {
+        self.mockEmptyMovies = movies
     }
-
-    func getActorData(actorURL: String, completion: @escaping (Result<movie_REST_API.ActorData?, Error>) -> ()) {
-        completion(.success(mockActorData))
+    
+    func getMovieCoreData(type: movie_REST_API.TypeMovie) -> [movie_REST_API.Movie]? {
+        mockMovies
     }
 }
