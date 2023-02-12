@@ -32,7 +32,7 @@ final class MockAssemblyBuilder: AssemblyBuilderProtocol {
         let networkService = MockNetworkService()
         let keychainService = MockKeychainService()
         let imageService = MockImageService()
-        let coreDataService = CoreDataService()
+        let coreDataService = MockCoreDataService()
         let viewModel = MovieViewModel(
             networkService: networkService,
             imageService: imageService,
