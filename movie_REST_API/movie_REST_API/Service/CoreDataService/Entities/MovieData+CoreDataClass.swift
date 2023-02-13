@@ -4,5 +4,5 @@
 import CoreData
 import Foundation
 
- @objc(MovieData)
- public class MovieData: NSManagedObject {}
+@objc(MovieData)
+public class MovieData: NSManagedObject {}

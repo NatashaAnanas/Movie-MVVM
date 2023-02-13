@@ -18,6 +18,7 @@ final class MovieViewController: UIViewController {
         static let newFilmString = "Новинки"
         static let errorText = "Error"
         static let addKeyText = "Введите ключ:"
+        static let accessibilityIdentifier = "MovieTableView"
     }
 
     // MARK: - Private Visual Components
@@ -125,7 +126,11 @@ final class MovieViewController: UIViewController {
     }
 
     // MARK: - Private Method
-    
+
+    private func setupIdentifierableView() {
+        movieTableView.accessibilityIdentifier = Constant.accessibilityIdentifier
+    }
+
     private func getMoviesDataStatus() {
         switch moviesDataStatus {
         case .loadingPopular:
@@ -165,7 +170,7 @@ final class MovieViewController: UIViewController {
             }
         }
     }
-    
+
     private func createUI() {
         setupMoviesDataStatus()
         title = Constant.filmsString
@@ -185,6 +190,7 @@ final class MovieViewController: UIViewController {
     private func setupTableViewDelegats() {
         movieTableView.delegate = self
         movieTableView.dataSource = self
+        setupIdentifierableView()
     }
 
     private func setConstraint() {
@@ -269,7 +275,6 @@ final class MovieViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movieViewModel?.numberOfRowsInSection(section: section) ?? 1
     }

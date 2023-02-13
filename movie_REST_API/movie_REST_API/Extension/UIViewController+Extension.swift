@@ -4,6 +4,7 @@
 import UIKit
 
 // MARK: - Private Constants
+
 private enum Constant {
     static let okTextString = "OK"
 }
