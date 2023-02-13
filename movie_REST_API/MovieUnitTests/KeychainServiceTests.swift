@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Тесты для KeychainService
+/// Tестирование сервиса для хранения критических данных
 final class KeychainServiceTests: XCTestCase {
     // MARK: - Private Constants
 
@@ -20,10 +20,12 @@ final class KeychainServiceTests: XCTestCase {
     // MARK: - Public Methods
 
     override func setUp() {
+        super.setUp()
         keychainService = KeychainService()
     }
 
     override func tearDown() {
+        super.tearDown()
         keychainService = nil
     }
 

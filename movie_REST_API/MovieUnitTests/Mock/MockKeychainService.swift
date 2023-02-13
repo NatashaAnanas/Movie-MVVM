@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Mock KeychainService
+/// Мок сервиса для хранения критических данных
 final class MockKeychainService: KeychainServiceProtocol {
     // MARK: - Private Constants
 

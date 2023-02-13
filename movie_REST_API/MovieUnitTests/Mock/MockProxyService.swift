@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Mock ProxyService
+/// Мок прокси сервиса
 final class MockProxyService: ProxyProtocol {
     // MARK: - Private Constants
 

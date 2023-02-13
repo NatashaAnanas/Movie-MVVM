@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Тестирование AssemblyBuilder
+/// Тестирование сборщика модуля
 final class AssemblyBuilderTests: XCTestCase {
     // MARK: - Private Constants
 
@@ -37,10 +37,12 @@ final class AssemblyBuilderTests: XCTestCase {
     // MARK: - Public Methods
 
     override func setUp() {
+        super.setUp()
         assemblyBuilder = AssemblyBuilder()
     }
 
     override func tearDown() {
+        super.tearDown()
         assemblyBuilder = nil
     }
 

@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Mock NetworkService
+/// Мок сетевого слоя
 final class MockNetworkService: NetworkServiceProtocol {
     // MARK: - Private Constants
 

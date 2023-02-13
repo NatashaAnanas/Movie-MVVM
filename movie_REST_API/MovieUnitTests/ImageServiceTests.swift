@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Тесты для ImageService
+/// Tестирование сервиса по загрузке фото
 final class ImageServiceTests: XCTestCase {
     // MARK: - Private Constants
 
@@ -25,12 +25,14 @@ final class ImageServiceTests: XCTestCase {
     // MARK: - Public Methods
 
     override func setUp() {
+        super.setUp()
         mockProxy = MockProxyService()
         guard let mockProxy = mockProxy else { return }
         imageService = ImageService(proxyService: mockProxy)
     }
 
     override func tearDown() {
+        super.tearDown()
         imageService = nil
     }
 

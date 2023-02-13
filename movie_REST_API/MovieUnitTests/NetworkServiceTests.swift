@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Тесты для NetworkService
+/// Tестирование сетевого слоя 
 final class NetworkServiceTests: XCTestCase {
     // MARK: - Private Constants
 
@@ -22,10 +22,12 @@ final class NetworkServiceTests: XCTestCase {
     // MARK: - Public Methods
 
     override func setUp() {
+        super.setUp()
         networkService = NetworkService()
     }
 
     override func tearDown() {
+        super.tearDown()
         networkService = nil
     }
 

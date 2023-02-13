@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Тесты для ProxyService
+/// Tестирование прокси сервиса
 final class ProxyServiceTests: XCTestCase {
     // MARK: - Private Constants
 
@@ -24,12 +24,14 @@ final class ProxyServiceTests: XCTestCase {
     // MARK: - Public Methods
 
     override func setUp() {
+        super.setUp()
         imageNetworkService = ImageNetworkService()
         fileService = FileService()
         mockProxy = MockProxyService()
     }
 
     override func tearDown() {
+        super.tearDown()
         mockProxy = nil
     }
 

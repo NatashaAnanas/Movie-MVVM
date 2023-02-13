@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Mock AssemblyBuilder
+/// Мок сборщика модуля
 final class MockAssemblyBuilder: AssemblyBuilderProtocol {
     // MARK: - Private Constants
 

@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Mock ImageService
+/// Мок сервиса по загрузке фото
 final class MockImageService: ImageServiceProtocol {
     // MARK: - Private Constants
 

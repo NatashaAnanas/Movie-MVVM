@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Mock NetworkService
+/// Мок coredata
 final class MockCoreDataService: CoreDataServiceProtocol {
     
     // MARK: - Private Constants

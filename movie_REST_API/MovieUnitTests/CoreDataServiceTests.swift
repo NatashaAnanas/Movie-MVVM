@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Tестирование CoreDataService
+/// Tестирование сервиса coreData
 final class CoreDataServiceTests: XCTestCase {
     // MARK: - Private Constants
 
@@ -37,10 +37,12 @@ final class CoreDataServiceTests: XCTestCase {
     // MARK: - Public Methods
 
     override func setUp() {
+        super.setUp()
         coreDataService = CoreDataService()
     }
 
     override func tearDown() {
+        super.tearDown()
         coreDataService = nil
     }
 

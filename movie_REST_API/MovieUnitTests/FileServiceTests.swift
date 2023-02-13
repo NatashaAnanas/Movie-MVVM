@@ -5,7 +5,7 @@ import XCTest
 
 @testable import movie_REST_API
 
-/// Тесты для FileService
+/// Tестирование файлового сервиса
 final class FileServiceTests: XCTestCase {
     // MARK: - Private Constants
 
@@ -23,10 +23,12 @@ final class FileServiceTests: XCTestCase {
     // MARK: - Public Methods
 
     override func setUp() {
+        super.setUp()
         fileService = FileService()
     }
 
     override func tearDown() {
+        super.tearDown()
         fileService = nil
     }
 
