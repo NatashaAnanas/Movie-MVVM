@@ -16,6 +16,10 @@ final class AssemblyBuilderTests: XCTestCase {
         static let mockDouble = 1.0
         static let mockStringText = "hello"
     }
+    
+    // MARK: - Public Properties
+    
+    var assemblyBuilder: AssemblyBuilderProtocol?
 
     // MARK: - Private Properties
 
@@ -29,9 +33,6 @@ final class AssemblyBuilderTests: XCTestCase {
         presentImageURLString: Constants.mockStringText
     )
 
-    // MARK: - Public Properties
-
-    var assemblyBuilder: AssemblyBuilderProtocol?
 
     // MARK: - Public Methods
 

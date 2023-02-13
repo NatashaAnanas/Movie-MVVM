@@ -1,9 +1,5 @@
-//
-//  MockCoreDataService.swift
-//  MovieUnitTests
-//
-//  Created by Анастасия Козлова on 12.02.2023.
-//
+// MockCoreDataService.swift
+// Copyright © Natasha Ananas. All rights reserved.
 
 import XCTest
 

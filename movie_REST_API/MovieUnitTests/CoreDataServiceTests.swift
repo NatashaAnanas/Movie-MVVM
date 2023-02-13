@@ -1,9 +1,5 @@
-//
-//  CoreDataServiceTests.swift
-//  MovieUnitTests
-//
-//  Created by Анастасия Козлова on 12.02.2023.
-//
+// CoreDataServiceTests.swift
+// Copyright © Natasha Ananas. All rights reserved.
 
 import XCTest
 
@@ -21,6 +17,10 @@ final class CoreDataServiceTests: XCTestCase {
         static let mockStringText = "hello"
     }
 
+    // MARK: - Public Properties
+    
+    var coreDataService: CoreDataServiceProtocol?
+    
     // MARK: - Private Properties
 
     private let mockMovie = [Movie(
@@ -33,9 +33,6 @@ final class CoreDataServiceTests: XCTestCase {
         presentImageURLString: Constants.mockStringText
     )]
 
-    // MARK: - Public Properties
-
-    var coreDataService: CoreDataServiceProtocol?
 
     // MARK: - Public Methods
 

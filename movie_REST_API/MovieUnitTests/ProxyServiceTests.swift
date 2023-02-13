@@ -16,10 +16,10 @@ final class ProxyServiceTests: XCTestCase {
 
     // MARK: - Public Properties
 
+    let mockPath = Constants.mockText
     var imageNetworkService: ImageNetworkServiceProtocol?
     var fileService: FileServiceProtocol?
     var mockProxy: MockProxyService?
-    let mockPath = Constants.mockText
 
     // MARK: - Public Methods
 
